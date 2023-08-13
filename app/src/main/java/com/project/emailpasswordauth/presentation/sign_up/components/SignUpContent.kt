@@ -18,10 +18,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.project.emailpasswordauth.R
 import com.project.emailpasswordauth.components.EmailField
 import com.project.emailpasswordauth.components.PasswordField
 
@@ -32,12 +35,15 @@ fun SignUpContent(
     signUp: (email: String, password: String) -> Unit,
     navigateBack: () -> Unit
 ) {
+
+    val context = LocalContext.current
+
     var email by rememberSaveable(
         stateSaver = TextFieldValue.Saver,
         init = {
             mutableStateOf(
                 value = TextFieldValue(
-                    text = ""
+                    text = context.getString(R.string.EMPTY_STRING)
                 )
             )
         }
@@ -47,7 +53,7 @@ fun SignUpContent(
         init = {
             mutableStateOf(
                 value = TextFieldValue(
-                    text = ""
+                    text = context.getString(R.string.EMPTY_STRING)
                 )
             )
         }
@@ -82,7 +88,7 @@ fun SignUpContent(
             }
         ) {
             Text(
-                text = "Sign Up",
+                text = stringResource(R.string.SIGN_UP_BUTTON),
                 fontSize = 15.sp
             )
         }
@@ -90,7 +96,7 @@ fun SignUpContent(
             modifier = Modifier.clickable {
                 navigateBack()
             },
-            text = "Already a user? Sign in.",
+            text = stringResource(R.string.ALREADY_USER),
             fontSize = 15.sp
         )
     }

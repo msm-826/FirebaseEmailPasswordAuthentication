@@ -3,7 +3,10 @@ package com.project.emailpasswordauth.presentation.sign_in
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.project.emailpasswordauth.Utils.Companion.showMessage
+import com.project.emailpasswordauth.presentation.sign_in.components.SignIn
 import com.project.emailpasswordauth.presentation.sign_in.components.SignInContent
 import com.project.emailpasswordauth.presentation.sign_in.components.SignInTopBar
 
@@ -14,6 +17,8 @@ fun SignInScreen(
     navigateToForgotPasswordScreen: () -> Unit,
     navigateToSignUpScreen: () -> Unit
 ) {
+
+    val context = LocalContext.current
 
     Scaffold (
         topBar = {
@@ -28,6 +33,12 @@ fun SignInScreen(
                 navigateToForgotPasswordScreen = navigateToForgotPasswordScreen,
                 navigateToSignUpScreen = navigateToSignUpScreen
             )
+        }
+    )
+
+    SignIn(
+        showErrorMessage = { errorMessage ->
+            showMessage(context, errorMessage)
         }
     )
 }

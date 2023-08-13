@@ -19,6 +19,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import com.project.emailpasswordauth.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -65,7 +67,7 @@ fun TopBar(
                 DropdownMenuItem(
                     text = {
                         Text(
-                            text = "Sign out"
+                            text = stringResource(R.string.SIGN_OUT_ITEM)
                         )
                     },
                     onClick = {
@@ -76,7 +78,7 @@ fun TopBar(
                 DropdownMenuItem(
                     text = {
                         Text(
-                            text = "Revoke access"
+                            text = stringResource(R.string.REVOKE_ACCESS_ITEM)
                         )
                     },
                     onClick = {

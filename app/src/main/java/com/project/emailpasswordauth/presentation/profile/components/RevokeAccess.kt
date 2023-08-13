@@ -1,11 +1,14 @@
 package com.project.emailpasswordauth.presentation.profile.components
 
-import android.util.Log
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.SnackbarResult
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.project.emailpasswordauth.R
+import com.project.emailpasswordauth.Utils.Companion.logError
+import com.project.emailpasswordauth.Utils.Companion.showMessage
 import com.project.emailpasswordauth.components.ProgressBar
 import com.project.emailpasswordauth.domain.model.Response
 import com.project.emailpasswordauth.presentation.profile.ProfileViewModel
@@ -20,10 +23,12 @@ fun RevokeAccess(
     signOut: () -> Unit
 ) {
 
+    val context = LocalContext.current
+
     fun showRevokeAccessMessage() = coroutineScope.launch {
         val result = snackbarHostState.showSnackbar(
-            message = "You need to re-authenticate before revoking the access.",
-            actionLabel = "Sign out"
+            message = context.getString(R.string.REVOKE_ACCESS_MESSAGE),
+            actionLabel = context.getString(R.string.SIGN_OUT_ITEM)
         )
 
         if (result == SnackbarResult.ActionPerformed) {
@@ -37,14 +42,14 @@ fun RevokeAccess(
             val isAccessRevoked = revokeAccessResponse.data
             LaunchedEffect(isAccessRevoked) {
                 if (isAccessRevoked) {
-                    Log.d("ctag", "access revoked")
+                    showMessage(context, context.getString(R.string.ACCESS_REVOKED_MESSAGE))
                 }
             }
         }
         is Response.Failure -> revokeAccessResponse.apply {
             LaunchedEffect(e) {
-                print(e)
-                if (e.message == "This operation is sensitive and requires recent authentication. Log in again before retrying this request.") {
+                logError(e)
+                if (e.message == context.getString(R.string.SENSITIVE_OPERATION_MESSAGE)) {
                     showRevokeAccessMessage()
                 }
             }

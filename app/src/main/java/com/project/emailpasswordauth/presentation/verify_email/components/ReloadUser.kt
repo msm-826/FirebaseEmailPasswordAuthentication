@@ -3,6 +3,7 @@ package com.project.emailpasswordauth.presentation.verify_email.components
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.project.emailpasswordauth.Utils.Companion.logError
 import com.project.emailpasswordauth.components.ProgressBar
 import com.project.emailpasswordauth.domain.model.Response
 import com.project.emailpasswordauth.presentation.profile.ProfileViewModel
@@ -24,7 +25,7 @@ fun ReloadUser(
         }
         is Response.Failure -> reloadUserResponse.apply {
             LaunchedEffect(e) {
-                print(e)
+                logError(e)
             }
         }
     }

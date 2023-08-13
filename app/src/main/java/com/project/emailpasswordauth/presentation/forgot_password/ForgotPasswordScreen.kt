@@ -1,10 +1,12 @@
 package com.project.emailpasswordauth.presentation.forgot_password
 
-import android.util.Log
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.project.emailpasswordauth.R
+import com.project.emailpasswordauth.Utils.Companion.showMessage
 import com.project.emailpasswordauth.presentation.forgot_password.components.ForgotPassword
 import com.project.emailpasswordauth.presentation.forgot_password.components.ForgotPasswordContent
 import com.project.emailpasswordauth.presentation.forgot_password.components.ForgotPasswordTopBar
@@ -15,6 +17,8 @@ fun ForgotPasswordScreen(
     viewModel: ForgotPasswordViewModel = hiltViewModel(),
     navigateBack: () -> Unit
 ) {
+
+    val context = LocalContext.current
 
     Scaffold(
         topBar = {
@@ -35,10 +39,10 @@ fun ForgotPasswordScreen(
     ForgotPassword(
         navigateBack = navigateBack,
         showResetPasswordMessage = {
-            Log.d("ctag", "reset")
+            showMessage(context, context.getString(R.string.RESET_PASSWORD_MESSAGE))
         },
-        showErrorMessage = {
-            Log.d("ctag", "error")
+        showErrorMessage = {errorMessage ->
+            showMessage(context,  errorMessage)
         }
     )
 }

@@ -3,6 +3,7 @@ package com.project.emailpasswordauth.presentation.sign_up.components
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.project.emailpasswordauth.Utils.Companion.logError
 import com.project.emailpasswordauth.components.ProgressBar
 import com.project.emailpasswordauth.domain.model.Response
 import com.project.emailpasswordauth.presentation.sign_up.SignUpViewModel
@@ -26,7 +27,7 @@ fun SignUp(
         }
         is Response.Failure ->signUpResponse.apply {
             LaunchedEffect(e) {
-                print(e)
+                logError(e)
             }
         }
     }

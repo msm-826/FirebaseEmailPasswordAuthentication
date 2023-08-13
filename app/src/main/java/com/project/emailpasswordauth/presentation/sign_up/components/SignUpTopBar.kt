@@ -4,6 +4,8 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
+import com.project.emailpasswordauth.R
 import com.project.emailpasswordauth.components.BackIcon
 
 
@@ -15,7 +17,7 @@ fun SignUpTopBar(
     TopAppBar (
         title = {
             Text(
-                text = "SIGN_UP_SCREEN"
+                text = stringResource(R.string.SIGN_UP_SCREEN)
             )
         },
         navigationIcon = {

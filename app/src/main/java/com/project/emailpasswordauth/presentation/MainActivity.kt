@@ -1,6 +1,7 @@
 package com.project.emailpasswordauth.presentation
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
@@ -10,8 +11,10 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.project.emailpasswordauth.R
 import com.project.emailpasswordauth.navigation.NavGraph
 import com.project.emailpasswordauth.navigation.Screen
 import com.project.emailpasswordauth.ui.theme.FirebaseEmailPasswordAuthenticationTheme
@@ -27,7 +30,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             FirebaseEmailPasswordAuthenticationTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
@@ -43,6 +45,7 @@ class MainActivity : ComponentActivity() {
     @Composable
     private fun AuthState() {
         val isUserSignedOut = viewModel.getAuthState().collectAsState().value
+        Log.d(stringResource(R.string.TAG), "isUserSignedOut: $isUserSignedOut")
         if (isUserSignedOut) {
             NavigateToSignInScreen()
         } else {

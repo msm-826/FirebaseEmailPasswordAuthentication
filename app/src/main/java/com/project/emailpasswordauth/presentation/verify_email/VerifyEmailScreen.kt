@@ -1,6 +1,5 @@
 package com.project.emailpasswordauth.presentation.verify_email
 
-import android.util.Log
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
@@ -8,7 +7,11 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.project.emailpasswordauth.R
+import com.project.emailpasswordauth.Utils.Companion.showMessage
 import com.project.emailpasswordauth.components.TopBar
 import com.project.emailpasswordauth.presentation.profile.ProfileViewModel
 import com.project.emailpasswordauth.presentation.profile.components.RevokeAccess
@@ -23,11 +26,12 @@ fun VerifyEmailScreen(
 ) {
     val snackbarHostState = remember { SnackbarHostState() }
     val coroutineScope = rememberCoroutineScope()
+    val context = LocalContext.current
 
     Scaffold(
         topBar = {
             TopBar(
-                title = "VERIFY_EMAIL_SCREEN",
+                title = stringResource(R.string.VERIFY_EMAIL_SCREEN),
                 signOut = {
                     viewModel.signOut()
                 },
@@ -52,7 +56,7 @@ fun VerifyEmailScreen(
             if (viewModel.isEmailVerified) {
                 navigateToProfileScreen()
             } else {
-                Log.d("ctag", "Your email is not verified.")
+                showMessage(context, context.getString(R.string.EMAIL_NOT_VERIFIED_MESSAGE))
             }
         }
     )

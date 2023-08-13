@@ -7,7 +7,9 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.project.emailpasswordauth.R
 import com.project.emailpasswordauth.components.TopBar
 import com.project.emailpasswordauth.presentation.profile.components.ProfileContent
 import com.project.emailpasswordauth.presentation.profile.components.RevokeAccess
@@ -24,12 +26,12 @@ fun ProfileScreen(
     Scaffold(
         topBar = {
             TopBar(
-                title = "Profile Screen",
+                title = stringResource(R.string.PROFILE_SCREEN),
                 signOut = { viewModel.signOut() },
                 revokeAccess = { viewModel.revokeAccess() }
             )
         },
-        content = {padding ->
+        content = { padding ->
             ProfileContent(padding = padding)
         },
         snackbarHost = { SnackbarHost(snackbarHostState) }

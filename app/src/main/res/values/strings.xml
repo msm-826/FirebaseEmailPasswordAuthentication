@@ -1,3 +1,39 @@
 <resources>
     <string name="app_name">FirebaseEmailPasswordAuthentication</string>
+
+    <string name="TAG">firebase_tag</string>
+
+    <string name="EMAIL_LABEL">Email</string>
+    <string name="PASSWORD_LABEL">Password</string>
+
+    <string name="SIGN_OUT_ITEM">Sign out</string>
+    <string name="REVOKE_ACCESS_ITEM">Revoke access</string>
+
+    <string name="PROFILE_SCREEN">Profile</string>
+    <string name="SIGN_IN_SCREEN">Sign in</string>
+    <string name="SIGN_UP_SCREEN">Sign Up</string>
+    <string name="VERIFY_EMAIL_SCREEN">Verify email</string>
+    <string name="FORGOT_PASSWORD_SCREEN">Forgot password</string>
+
+    <string name="REVOKE_ACCESS_MESSAGE">You need to re-authenticate before revoking the access.</string>
+    <string name="ACCESS_REVOKED_MESSAGE">Your access has been revoked.</string>
+    <string name="RESET_PASSWORD_MESSAGE">We\'ve sent you an email with a link to reset the password.</string>
+    <string name="VERIFY_EMAIL_MESSAGE">We\'ve sent you an email with a link to verify the email.</string>
+    <string name="EMAIL_NOT_VERIFIED_MESSAGE">Your email is not verified.</string>
+
+    <string name="RESET_PASSWORD_BUTTON">Reset password</string>
+    <string name="SIGN_IN_BUTTON">Sign in</string>
+    <string name="SIGN_UP_BUTTON">Sign Up</string>
+
+    <string name="FORGOT_PASSWORD">Forgot password?</string>
+    <string name="NO_ACCOUNT">No account? Sign up</string>
+    <string name="ALREADY_USER">Already a user? Sign in.</string>
+    <string name="ALREADY_VERIFIED">Already verified?</string>
+    <string name="WELCOME">You are Logged in and verified.</string>
+    <string name="SPAM_EMAIL">If not, please also check the spam folder.</string>
+
+    <string name="SENSITIVE_OPERATION_MESSAGE">This operation is sensitive and requires recent authentication. Log in again before retrying this request.</string>
+
+    <string name="EMPTY_STRING" />
+    <string name="VERTICAL_DIVIDER">|</string>
 </resources>

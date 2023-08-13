@@ -28,9 +28,9 @@ interface AuthRepository {
 
     suspend fun sendPasswordResetEmail(email: String): SendPasswordResetEmailResponse
 
+    fun signOut()
+
     suspend fun revokeAccess(): RevokeAccessResponse
 
     fun getAuthState(viewModelScope: CoroutineScope): AuthStateResponse
-
-    fun signOut()
 }

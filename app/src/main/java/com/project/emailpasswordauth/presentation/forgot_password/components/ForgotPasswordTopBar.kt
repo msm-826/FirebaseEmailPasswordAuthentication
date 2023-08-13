@@ -4,6 +4,8 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
+import com.project.emailpasswordauth.R
 import com.project.emailpasswordauth.components.BackIcon
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -14,7 +16,7 @@ fun ForgotPasswordTopBar(
     TopAppBar (
         title = {
             Text(
-                text = "Forgot Password Screen"
+                text = stringResource(R.string.FORGOT_PASSWORD_SCREEN)
             )
         },
         navigationIcon = {

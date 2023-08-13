@@ -17,9 +17,10 @@ import javax.inject.Singleton
 class AuthRepositoryImpl @Inject constructor(
     private val auth: FirebaseAuth
 ): AuthRepository {
+
     override val currentUser get() = auth.currentUser
 
-    override suspend fun firebaseSignInWithEmailAndPassword(
+    override suspend fun firebaseSignUpWithEmailAndPassword(
         email: String,
         password: String
     ) = try {
@@ -36,7 +37,7 @@ class AuthRepositoryImpl @Inject constructor(
         Response.Failure(e)
     }
 
-    override suspend fun firebaseSignUpWithEmailAndPassword(
+    override suspend fun firebaseSignInWithEmailAndPassword(
         email: String,
         password: String
     ) = try {
@@ -60,6 +61,8 @@ class AuthRepositoryImpl @Inject constructor(
         Response.Failure(e)
     }
 
+    override fun signOut() = auth.signOut()
+
     override suspend fun revokeAccess() = try {
        auth.currentUser?.delete()?.await()
         Response.Success(true)
@@ -76,6 +79,4 @@ class AuthRepositoryImpl @Inject constructor(
             auth.removeAuthStateListener(authStateListener)
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), auth.currentUser == null)
-
-    override fun signOut() = auth.signOut()
 }

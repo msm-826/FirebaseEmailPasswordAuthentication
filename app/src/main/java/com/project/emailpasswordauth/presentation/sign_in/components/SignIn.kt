@@ -1,4 +1,4 @@
-package com.project.emailpasswordauth.presentation.sign_up.components
+package com.project.emailpasswordauth.presentation.sign_in.components
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -6,18 +6,20 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.project.emailpasswordauth.Utils.Companion.logError
 import com.project.emailpasswordauth.components.ProgressBar
 import com.project.emailpasswordauth.domain.model.Response
-import com.project.emailpasswordauth.presentation.sign_up.SignUpViewModel
+import com.project.emailpasswordauth.presentation.sign_in.SignInViewModel
 
 @Composable
-fun SendEmailVerification(
-    viewModel: SignUpViewModel = hiltViewModel()
+fun SignIn(
+    viewModel: SignInViewModel = hiltViewModel(),
+    showErrorMessage: (errorMessage: String?) -> Unit
 ) {
-    when (val sendEmailVerificationResponse = viewModel.sendEmailVerificationResponse) {
+    when(val signInResponse = viewModel.signInResponse) {
         is Response.Loading -> ProgressBar()
         is Response.Success -> Unit
-        is Response.Failure -> sendEmailVerificationResponse.apply {
+        is Response.Failure -> signInResponse.apply {
             LaunchedEffect(e) {
                 logError(e)
+                showErrorMessage(e.message)
             }
         }
     }

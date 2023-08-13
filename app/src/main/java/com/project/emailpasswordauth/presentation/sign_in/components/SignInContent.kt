@@ -19,11 +19,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.project.emailpasswordauth.R
 import com.project.emailpasswordauth.components.EmailField
 import com.project.emailpasswordauth.components.PasswordField
 
@@ -35,11 +38,14 @@ fun SignInContent(
     navigateToForgotPasswordScreen: () -> Unit,
     navigateToSignUpScreen: () -> Unit
 ) {
+
+    val context = LocalContext.current
+
     var email by rememberSaveable(
         stateSaver = TextFieldValue.Saver, init = {
             mutableStateOf(
                 value = TextFieldValue(
-                    text = ""
+                    text = context.getString(R.string.EMPTY_STRING)
                 )
             )
         }
@@ -49,7 +55,7 @@ fun SignInContent(
         stateSaver = TextFieldValue.Saver, init = {
             mutableStateOf(
                 value = TextFieldValue(
-                    text = ""
+                    text = context.getString(R.string.EMPTY_STRING)
                 )
             )
         }
@@ -85,7 +91,7 @@ fun SignInContent(
             }
         ) {
             Text(
-                text = "Sign in",
+                text = stringResource(R.string.SIGN_IN_BUTTON),
                 fontSize = 15.sp
             )
         }
@@ -95,12 +101,12 @@ fun SignInContent(
                     .clickable {
                     navigateToForgotPasswordScreen()
                 },
-                text = "Forgot password?",
+                text = stringResource(R.string.FORGOT_PASSWORD),
                 fontSize = 15.sp
             )
             Text(
                 modifier = Modifier.padding(start = 4.dp, end = 4.dp),
-                text = "|",
+                text = stringResource(R.string.VERTICAL_DIVIDER),
                 fontSize = 15.sp,
                 fontWeight = FontWeight.Bold
             )
@@ -108,7 +114,7 @@ fun SignInContent(
                 modifier = Modifier.clickable {
                     navigateToSignUpScreen()
                 },
-                text = "No account? Sign up",
+                text = stringResource(R.string.NO_ACCOUNT),
                 fontSize = 15.sp
             )
         }

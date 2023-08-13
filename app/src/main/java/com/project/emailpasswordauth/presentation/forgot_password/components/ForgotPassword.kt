@@ -3,6 +3,7 @@ package com.project.emailpasswordauth.presentation.forgot_password.components
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.project.emailpasswordauth.Utils.Companion.logError
 import com.project.emailpasswordauth.components.ProgressBar
 import com.project.emailpasswordauth.domain.model.Response
 import com.project.emailpasswordauth.presentation.forgot_password.ForgotPasswordViewModel
@@ -27,7 +28,7 @@ fun ForgotPassword(
         }
         is Response.Failure -> sendPasswordResetEmailResponse.apply {
             LaunchedEffect(e) {
-                print(e)
+                logError(e)
                 showErrorMessage(e.message)
             }
         }
