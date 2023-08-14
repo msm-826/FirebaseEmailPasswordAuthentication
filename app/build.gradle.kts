@@ -1,14 +1,13 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("com.google.gms.google-services")
     id("dagger.hilt.android.plugin")
     id("kotlin-kapt")
 }
 
 android {
     namespace = "com.project.emailpasswordauth"
-    compileSdk = 34
+    compileSdk = 33
 
     defaultConfig {
         applicationId = "com.project.emailpasswordauth"
@@ -25,7 +24,8 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -43,7 +43,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+        kotlinCompilerExtensionVersion = "1.5.1"
     }
     packaging {
         resources {
@@ -75,12 +75,10 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.2.2"))
     implementation("com.google.firebase:firebase-auth-ktx")
 
-    implementation("com.google.android.gms:play-services-auth:20.6.0")
-
     implementation("com.google.dagger:hilt-android:2.47")
     kapt("com.google.dagger:hilt-compiler:2.47")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
-    implementation("androidx.navigation:navigation-compose:2.7.0")
+    implementation("androidx.navigation:navigation-compose:2.6.0")
 
 }

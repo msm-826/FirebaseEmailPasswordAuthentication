@@ -1,7 +1,7 @@
 package com.project.emailpasswordauth.components
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.ArrowBack
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
@@ -14,7 +14,7 @@ fun BackIcon(
         onClick = navigateBack
     ) {
         Icon(
-            imageVector = Icons.Outlined.ArrowBack,
+            imageVector = Icons.Default.ArrowBack,
             contentDescription = null,
         )
     }

@@ -4,7 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.MoreVert
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -50,7 +50,7 @@ fun TopBar(
                         }
                     ) {
                         Icon(
-                            imageVector = Icons.Outlined.MoreVert,
+                            imageVector = Icons.Default.MoreVert,
                             contentDescription = null,
                         )
                     }
